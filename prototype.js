@@ -56,37 +56,41 @@ class Book{
 }
 
 Book.prototype.createBookCard = function(){
-    let motherDiv = document.createElement('div');
-    motherDiv.id = "childNode " + myLibrary.length.toString();
-    // motherDiv.classList.add(motherDiv);
-      let divTitle = document.createElement('div');
-      divTitle.textContent = `Title: ${myLibrary[myLibrary.length - 1].title}`;
-      motherDiv.appendChild(divTitle);
-      
-      let divAuthor = document.createElement('div');
-      divAuthor.textContent =  `Author: ${myLibrary[myLibrary.length - 1].author}`;
-      motherDiv.appendChild(divAuthor);
+  let motherDiv = document.createElement('div');
+  motherDiv.id = "childNode " + myLibrary.length.toString();
+  // motherDiv.classList.add(motherDiv);
+  let divTitle = document.createElement('div');
+  divTitle.textContent = `Title: ${myLibrary[myLibrary.length - 1].title}`;
+  motherDiv.appendChild(divTitle);
 
-      let divPage = document.createElement('div');
-      divPage.textContent = `Page Number: ${myLibrary[myLibrary.length - 1].page}`;
-      motherDiv.appendChild(divPage);
-      
-      
-      motherDiv.appendChild(deleteButton);
-      
-      bookLibrary.appendChild(motherDiv);
+  let divAuthor = document.createElement('div');
+  divAuthor.textContent =  `Author: ${myLibrary[myLibrary.length - 1].author}`;
+  motherDiv.appendChild(divAuthor);
+
+  let divPage = document.createElement('div');
+  divPage.textContent = `Page Number: ${myLibrary[myLibrary.length - 1].page}`;
+  motherDiv.appendChild(divPage);
+
+  // connect delete button to book card
+  motherDiv.appendChild(deletePost());
+
+  bookLibrary.appendChild(motherDiv);
 
 
   }
 
 function deletePost(){
-  let deleteButton = document.createElement('BUTTON');
+  let deleteButton = document.createElement('button');
   deleteButton.innerText = "Delete Book";
   deleteButton.id = "childNode " + myLibrary.length.toString();
   deleteButton.onclick = function(){
-    this.parentNode.parentNode.removeChild(parentNode.this);    
+    this.parentNode.parentNode.removeChild(this.parentNode);    
   }
-  bookLibrary.appendChild(deleteButton);
+  return deleteButton;
+
+  // Assuming you wanna keep the item and delete button under one element
+  //
+  // bookLibrary.appendChild(deleteButton);
 }
 
 
